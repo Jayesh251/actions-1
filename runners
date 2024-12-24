@@ -1,0 +1,52 @@
+A runner is a virtual machine (VM) responsible for executing your workflows upon triggering. GitHub
+automatically provisions runners for each job based on the runs-on configuration specified.
+In this example workflow, there's a job named 'unit-testing' that runs on three different machines: Windows,
+Ubuntu, and macOS. Consequently, GitHub will provision three VMs for these jobs. These VMs are known as
+GitHub Hosted Runners.
+GitHub hosts Linux and Windows runners using Microsoft Azure, while macOS runners are hosted in GitHub's
+own macOS Cloud.
+
+After the runners are up and running, they start the execution of the steps defined within the job.
+Firstly, the runners will clone the repository locally.
+Then, they proceed to install Node.js and set up the necessary environment.
+
+These same steps are executed on all three runners concurrently. Consequently, if one runner completes all
+the step executions, it will be marked as successful, even if the other runners are still in the process of
+executing their remaining steps.
+The workflow as a whole is marked as successful only once all three runners have completed their tasks
+successfully.
+
+During and after the job's execution, you can access the logs, output, and any artifacts for each step via the GitHub User
+Interface.
+This information is received from the runners where the jobs get executed
+Within the Github repository, you can simply navigate to the Actions Tab to inspect the logs and artifacts.
+
+There are two types of runners: GitHub-hosted runners and self-hosted runners. Let's explore the key differences between
+them:
+GitHub-hosted runner: are hosted and maintained by GitHub. GitHub provides a set of virtual machines with various
+configurations, including different operating systems and software environments. You don't need to worry about managing
+the infrastructure for these runners.
+
+Self-hosted runner: run on your own infrastructure, such as your own servers, virtual machines, or even
+cloud. You have full control over the environment, but you are responsible for setting up and maintaining
+these runners.
+
+
+GitHub-hosted runner by default Provides a new clean instance for every job execution.
+Self-hosted runner: can run multiple jobs on the same machine
+within GitHub-hosted runner: You cannot customize the runners beyond selecting the type of runner (e.g.,
+Ubuntu, Windows, macOS). You can't install additional software or make system-level changes.
+whereas in Self-hosted runner You have complete control over the self-hosted runner's environment. You
+can install any required software, configure the runner to your needs, and even use it to run workflows that
+require specific hardware or software configurations.
+
+
+When it comes to the cost or pricing perspective,
+•GitHub-hosted runner: are provided as part of your GitHub subscription, but there are usage limits. If your
+usage exceeds these limits, you may incur additional charges.
+in Self-hosted runner: You bear the costs of maintaining and operating your own infrastructure
+Choosing between GitHub-hosted runners and self-hosted runners depends on factors like your workflow
+requirements, security considerations, and infrastructure capabilities. Each has its own advantages, and the
+choice should align with your specific needs.
+
+
